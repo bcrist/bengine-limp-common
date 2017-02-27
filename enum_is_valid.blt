@@ -1,0 +1,13 @@
+
+///////////////////////////////////////////////////////////////////////////////
+bool is_valid(`name` constant) {
+   switch (constant) {`
+with each constants using # {
+   nl `      case `$$$.name`::`name`:`
+}
+`
+         return true;
+      default:
+         return false;
+   }
+}

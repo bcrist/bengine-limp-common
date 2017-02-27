@@ -1,0 +1,22 @@
+
+///////////////////////////////////////////////////////////////////////////////
+enum `
+if class {
+   `class `
+}
+name
+if type {
+   ` : ` $.type
+}
+` {`
+with each constants using # {
+   if __k__ > 1 {
+      ','
+   }
+   nl `   ` name
+   if assign_value {
+      ` = ` assign_value
+   }
+}
+`
+};

@@ -1,0 +1,26 @@
+
+///////////////////////////////////////////////////////////////////////////////
+`output_enum.name` `name`(`input_enum.name` constant) {
+   switch (constant) {`
+input = input_enum
+output = output_enum
+max_length = input.max_constant_name_length
+mapper = mapper
+mapper_is_func = type(mapper) == 'function'
+default = output.constant_map[default].name
+with each input.constants using # {
+   value = mapper_is_func ? mapper($, input, output) : $[mapper]
+   if value {
+      value = output.constant_map[value]
+      if value && value.name ~= default {
+         nl `      case `input.name`::`name`:`
+         string.rep(' ', max_length + 1 - #name)
+         `return `output.name`::`value.name`;`
+      }
+   }
+}
+`
+      default:
+         return `output.name`::`default`;
+   }
+}
