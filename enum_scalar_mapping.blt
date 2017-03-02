@@ -1,0 +1,26 @@
+
+///////////////////////////////////////////////////////////////////////////////
+`$.type` `name`(`enum.name` constant) {
+   switch (constant) {`
+enum = enum
+max_length = enum.max_constant_name_length
+mapper = mapper
+mapper_is_func = type(mapper) == 'function'
+default = default
+scalar_type = $.type
+with each enum.constants using # {
+   value = mapper_is_func ? mapper($, enum) : $[mapper]
+   if value ~= nil {
+      value = value
+      if value ~= default {
+         nl `      case `enum.name`::`name`:`
+         string.rep(' ', max_length + 1 - #name)
+         `return `scalar_type`(`value`);`
+      }
+   }
+}
+`
+      default:
+         return `scalar_type`(`default`);
+   }
+}
