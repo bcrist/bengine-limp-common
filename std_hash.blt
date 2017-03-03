@@ -1,0 +1,10 @@
+#include <be/core/alg.hpp>
+#include <functional>
+
+template <>
+struct std::hash<`$`> {
+   std::size_t operator()(const `$`& o) const {
+      using be::std_hash;
+      return std_hash(o);
+   }
+};
