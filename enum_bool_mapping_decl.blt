@@ -1,2 +1,2 @@
 
-bool `name`(`enum.name` constant);`
+bool `name`(`enum.name` constant) noexcept;`

@@ -1,6 +1,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////
-`$.type` `name`(`enum.name` constant) {
+`$.type` `name`(`enum.name` constant) noexcept {
    switch (constant) {`
 enum = enum
 max_length = enum.max_constant_name_length

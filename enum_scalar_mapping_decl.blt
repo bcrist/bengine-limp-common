@@ -1,2 +1,2 @@
 
-`$.type` `name`(`enum.name` constant);`
+`$.type` `name`(`enum.name` constant) noexcept;`

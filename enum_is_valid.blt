@@ -1,6 +1,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////
-bool is_valid(`name` constant) {
+bool is_valid(`name` constant) noexcept {
    switch (constant) {`
 with each constants using # {
    nl `      case `$$$.name`::`name`:`
