@@ -1,5 +1,3 @@
-#include <be/core/alg.hpp>
-#include <functional>
 
 template <>
 struct std::hash<`$`> {
