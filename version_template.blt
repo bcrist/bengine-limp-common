@@ -1,0 +1,2 @@
+#define `ns_shouting`_VERSION (`ns_shouting`_VERSION_MAJOR * 100000 + `ns_shouting`_VERSION_MINOR * 1000 + `ns_shouting`_VERSION_REV)
+#define `ns_shouting`_VERSION_STRING "`name` " BE_STRINGIFY(`ns_shouting`_VERSION_MAJOR) "." BE_STRINGIFY(`ns_shouting`_VERSION_MINOR) "." BE_STRINGIFY(`ns_shouting`_VERSION_REV)
