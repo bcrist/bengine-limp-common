@@ -8,6 +8,7 @@ mapper = mapper
 mapper_is_func = type(mapper) == 'function'
 default = default
 scalar_type = $.type
+no_cast = $.no_cast
 with each enum.constants using # {
    value = mapper_is_func ? mapper($, enum) : $[mapper]
    if value ~= nil {
@@ -15,12 +16,13 @@ with each enum.constants using # {
       if value ~= default {
          nl `      case `enum.name`::`name`:`
          string.rep(' ', max_length + 1 - #name)
-         `return `scalar_type`(`value`);`
+         `return ` if no_cast value else { scalar_type`(`value`)` } `;`
       }
    }
 }
 `
       default:
-         return `scalar_type`(`default`);
+         return `
+         if no_cast default else { scalar_type`(`default`)` } `;
    }
 }

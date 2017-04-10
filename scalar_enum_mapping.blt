@@ -1,0 +1,18 @@
+
+///////////////////////////////////////////////////////////////////////////////
+`enum.name` `name`(`$.type` value) noexcept {
+   switch (value) {`
+enum = enum
+mapper = mapper
+mapper_is_func = type(mapper) == 'function'
+with each enum.constants using # {
+   value = mapper_is_func ? mapper($, enum) : $[mapper]
+   if value ~= nil {
+      nl `      case `value`: return `enum.name`::`name`;`
+   }
+}
+`
+      default:
+         return `default`;
+   }
+}
