@@ -2,24 +2,24 @@
 ///////////////////////////////////////////////////////////////////////////////
 bool `name`(`enum.name` constant) noexcept {
    switch (constant) {`
-enum = enum
-max_length = enum.max_constant_name_length
-predicate = predicate
-predicate_is_func = type(predicate) == 'function'
-default = default ? true : false
+_enum = enum
+_max_length = enum.max_constant_name_length
+_predicate = predicate
+_predicate_is_func = type(predicate) == 'function'
+_default = default ? true : false
 with each enum.constants using # {
-   value = predicate_is_func ? predicate($, enum) : $[predicate]
-   if value ~= nil {
-      value = value ? true : false
-      if value ~= default {
-         nl `      case `enum.name`::`name`:`
-         string.rep(' ', max_length + 1 - #name)
-         `return `value`;`
+   _value = _predicate_is_func ? _predicate($, _enum) : $[_predicate]
+   if _value ~= nil {
+      _value = _value ? true : false
+      if _value ~= _default {
+         nl `      case `_enum.name`::`name`:`
+         string.rep(' ', _max_length + 1 - #name)
+         `return `_value`;`
       }
    }
 }
 `
       default:
-         return `default`;
+         return `_default`;
    }
 }

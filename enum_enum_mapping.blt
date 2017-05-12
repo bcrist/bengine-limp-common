@@ -5,22 +5,22 @@
 input = input_enum
 output = output_enum
 max_length = input.max_constant_name_length
-mapper = mapper
-mapper_is_func = type(mapper) == 'function'
-default = output.constant_map[default].name
+_mapper = mapper
+_mapper_is_func = type(mapper) == 'function'
+_default = output.constant_map[default].name
 with each input.constants using # {
-   value = mapper_is_func ? mapper($, input, output) : $[mapper]
-   if value {
-      value = output.constant_map[value]
-      if value && value.name ~= default {
+   _value = _mapper_is_func ? _mapper($, input, output) : $[_mapper]
+   if _value {
+      _value = output.constant_map[_value]
+      if _value && _value.name ~= _default {
          nl `      case `input.name`::`name`:`
          string.rep(' ', max_length + 1 - #name)
-         `return `output.name`::`value.name`;`
+         `return `output.name`::`_value.name`;`
       }
    }
 }
 `
       default:
-         return `output.name`::`default`;
+         return `output.name`::`_default`;
    }
 }
