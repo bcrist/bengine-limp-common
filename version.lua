@@ -2,7 +2,7 @@
 
 local ns, name = ...
 
-write_template('common/version_template', {
+write_template('common/templates/version', {
    name = name or ns,
    ns_shouting = string.upper(ns:gsub('::', '_'))
 })

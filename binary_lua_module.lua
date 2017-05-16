@@ -77,4 +77,4 @@ for i = 1, length do
 end
 line[n] = table.concat(line[n])
 
-write_template('common/binary_lua_module_template', { symbol = args.symbol, length = length, uncompressed_length = uncompressed_length, line = line })
+write_template('common/templates/binary_lua_module', { symbol = args.symbol, length = length, uncompressed_length = uncompressed_length, line = line })

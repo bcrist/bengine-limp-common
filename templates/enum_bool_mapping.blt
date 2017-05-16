@@ -1,4 +1,3 @@
-
 ///////////////////////////////////////////////////////////////////////////////
 bool `name`(`enum.name` constant) noexcept {
    switch (constant) {`
@@ -23,3 +22,4 @@ with each enum.constants using # {
          return `_default`;
    }
 }
+

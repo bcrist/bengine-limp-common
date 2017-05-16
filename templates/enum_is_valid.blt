@@ -1,15 +1,13 @@
-
 ///////////////////////////////////////////////////////////////////////////////
-const char* ` snake_case_name `_name(`name` constant) noexcept {
+bool is_valid(`name` constant) noexcept {
    switch (constant) {`
-max_length = max_constant_name_length
 with each constants using # {
    nl `      case `$$$.name`::`name`:`
-   string.rep(' ', max_length + 1 - #name)
-   `return "`name`";`
 }
 `
+         return true;
       default:
-         return "?";
+         return false;
    }
 }
+

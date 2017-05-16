@@ -1,2 +1,0 @@
-
-`output_enum.name` `name`(`input_enum.name` constant) noexcept;`

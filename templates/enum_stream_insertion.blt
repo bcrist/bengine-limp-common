@@ -1,0 +1,10 @@
+///////////////////////////////////////////////////////////////////////////////
+std::ostream& operator<<(std::ostream& os, `name` constant) {
+   if (is_valid(constant)) {
+      os << `snake_case_name`_name(constant);
+   } else {
+      os << static_cast<I64>(static_cast<`$.type`>(constant));
+   }
+   return os;
+}
+

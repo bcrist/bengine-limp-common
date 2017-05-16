@@ -1,0 +1,5 @@
+`
+in_type = (output_enum.namespace == input_enum.namespace ? (input_enum.name) : (input_enum.full_name))
+out_type = (output_enum.namespace == input_enum.namespace ? (output_enum.name) : (output_enum.full_name))
+
+out_type` `name`(`in_type` constant) noexcept;

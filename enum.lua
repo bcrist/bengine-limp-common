@@ -1,6 +1,7 @@
-include 'common/case'
+include 'common/convert_case'
+include 'common/split_namespace'
 
-function make_enum (name, datatype, constants, class)
+function make_enum (full_name, datatype, constants, class)
    local data = { }
    local map = { }
    local last_value
@@ -47,9 +48,14 @@ function make_enum (name, datatype, constants, class)
       map[constant.name] = constant
    end
 
+   local name, ns = split_namespace(full_name)
+
    return {
       class = class,
+      full_name = full_name,
       name = name,
+      ns = ns,
+      namespace = table.concat(ns, '::'),
       snake_case_name = to_snake_case(name),
       type = datatype,
       constants = data,
@@ -58,6 +64,6 @@ function make_enum (name, datatype, constants, class)
    }
 end
 
-function make_enum_class (name, datatype, constants)
-   return make_enum(name, datatype, constants, true)
+function make_enum_class (full_name, datatype, constants)
+   return make_enum(full_name, datatype, constants, true)
 end

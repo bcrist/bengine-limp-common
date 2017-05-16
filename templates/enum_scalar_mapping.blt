@@ -1,4 +1,3 @@
-
 ///////////////////////////////////////////////////////////////////////////////
 `$.type` `name`(`enum.name` constant) noexcept {
    switch (constant) {`
@@ -26,3 +25,4 @@ with each enum.constants using # {
          if no_cast default else { scalar_type`(`default`)` } `;
    }
 }
+

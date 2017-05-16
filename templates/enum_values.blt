@@ -1,0 +1,5 @@
+///////////////////////////////////////////////////////////////////////////////
+std::array<const `name`, `#constants`> `snake_case_name`_values() noexcept {
+   return ::be::EnumTraits<`name`>::values<>();
+}
+

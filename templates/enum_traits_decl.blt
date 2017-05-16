@@ -1,0 +1,26 @@
+namespace be {
+
+///////////////////////////////////////////////////////////////////////////////
+template <>
+struct EnumTraits<::`namespace`::`name`> {
+   using type = ::`namespace`::`name`;
+   using underlying_type = typename std::underlying_type<type>::type;
+
+   static constexpr std::size_t count = `#constants`;
+
+   static bool is_valid(type value) {
+      return ::`namespace`::is_valid(value);
+   }
+
+   static const char* name(type value) {
+      return ::`namespace`::`snake_case_name`_name(value);
+   }
+
+   template <typename C = std::array<const type, count>>
+   static C values() {
+      return {`with each constants using # { nl `         ::`$$$.namespace`::`$$$.name`::`name`,` } `
+      };
+   }
+};
+
+} // be

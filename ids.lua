@@ -126,4 +126,4 @@ end
 
 max_length = max_length + 1
 
-write_template('common/ids_template', { header_guard = header_guard, symbol_column_width = max_length, id = id })
+write_template('common/templates/ids', { header_guard = header_guard, symbol_column_width = max_length, id = id })
