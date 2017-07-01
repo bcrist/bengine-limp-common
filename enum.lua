@@ -24,7 +24,7 @@ function make_enum (full_name, datatype, constants, class)
 
       max_length = math.max(max_length, #constant.name)
 
-      if not constant.value then
+      if not constant.value or (type(constant.value) == 'string' and #constant.value == 0) then
          constant.value = (last_value or -1) + 1
          if last_value == nil or constant.value ~= (last_value + 1) then
             constant.assign_value = constant.value
@@ -33,12 +33,12 @@ function make_enum (full_name, datatype, constants, class)
          constant.assign_value = constant.value
       end
 
-      if type(constant.value) == 'number' then
+      if tonumber(constant.value) ~= nil then
          last_value = constant.value
       else
          local other = map[constant.value]
          if not other then
-            error('Enum constant ' .. constant.value .. ' not defined!')
+            last_value = nil
          else
             last_value = other.value
          end
