@@ -1,11 +1,10 @@
 -- Dumps a provided lua chunk/function to a string and then writes that string in a #define
 
 local args = ...
--- args.fn -- function to compile
--- args.strip -- if truthy, strip debug info when compiling
+-- args.path -- path to file to include as a string
 -- args.symbol -- #define symbol.
 -- args.line_length -- max chars that will be output on a single line (not including quotes, indents, etc).  Default 72.
--- args.deflate -- if truthy, deflate the compiled data using zlib
+-- args.deflate -- if truthy, deflate the data using zlib
 
 local table = table
 local string = string
@@ -22,13 +21,13 @@ local safe_chars = {
    ['\r']='\\r', ['\t']='\\t', ['\v']='\\v'
 }
 
-local compiled = string.dump(args.fn, args.strip)
-local length = #compiled
+local data = get_file_contents(args.path)
+local length = #data
 local uncompressed_length
 if args.deflate then
    uncompressed_length = length
-   compiled = be.util.deflate(compiled, 9)
-   length = #compiled
+   data = be.util.deflate(data, 9)
+   length = #data
 end
 local line_length = args.line_length or 72
 local line = { { } }
@@ -38,7 +37,7 @@ local c = 1
 local line_available = line_length
 local last_was_escape = false
 for i = 1, length do
-   local b = string.byte(compiled, i)
+   local b = string.byte(data, i)
    if b >= 65 and b <= 90 or b >= 97 and b <= 122 then  -- [A-Za-z]
       b = string.char(b)
       last_was_escape = false
@@ -46,7 +45,7 @@ for i = 1, length do
       if not last_was_escape then
          b = string.char(b)
       else
-         local nextb = string.byte(compiled, i + 1)
+         local nextb = string.byte(data, i + 1)
          if nextb >= 48 and nextb <= 57 then    -- if the next char is also a digit, don't encode this one as an octal escape.
             b = '""' .. string.char(b)
             last_was_escape = false
