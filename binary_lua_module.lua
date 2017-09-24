@@ -47,7 +47,7 @@ for i = 1, length do
          b = string.char(b)
       else
          local nextb = string.byte(compiled, i + 1)
-         if nextb >= 48 and nextb <= 57 then    -- if the next char is also a digit, don't encode this one as an octal escape.
+         if nextb ~= nil and nextb >= 48 and nextb <= 57 then    -- if the next char is also a digit, don't encode this one as an octal escape.
             b = '""' .. string.char(b)
             last_was_escape = false
          else
